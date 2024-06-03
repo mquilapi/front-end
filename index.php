@@ -590,11 +590,10 @@
     fetchHistoria();
 </script>
 
-<!-- script para Realizar Preguntas frecuentes -->
-<script>
-    // Función para obtener y mostrar la información de contacto
-    function fetchinfoContacto() {
-        fetch('http://localhost/BACK-END/v1/info_contacto/', {
+<!-- script para Realizar Función para obtener y mostrar las preguntas frecuentes  -->
+<script>    
+    function fetchPreguntasFrecuentes() {
+        fetch('http://localhost/BACK-END/v1/pregunta_frecuente/', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer get',
@@ -603,40 +602,62 @@
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Error al recuperar la información de contacto');
+                throw new Error('Error al recuperar');
             }
             return response.json();
         })
         .then(data => {
-            const contacto = data.data; // Suponiendo que data.data contiene la infoContacto 
-            console.log(contacto);
+            const preguntas = data.data; // Suponiendo que data.data contiene las preguntas frecuentes
+            console.log(preguntas);
 
-            const infoContacto = document.getElementById('infoContacto');
-            infoContacto.innerHTML = ''; // Vacía cualquier contenido existente dentro del elemento con id="infoContacto".
+            const Preguntas = document.getElementById('Preguntas');
+            Preguntas.innerHTML = ''; // Vacía cualquier contenido existente dentro del elemento div con id="Preguntas".
 
-            // Crear el nuevo contenido del footer dinámicamente
-            const contactoHTML = `
-                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><img src="assets/images/map-icon.svg" alt="Icono map"> ${contacto.direccion}</a></li>
-                    <li class="nav-item"><a href="mailto:${contacto.email}" class="nav-link px-2 text-body-secondary"><img src="assets/images/email-icon.svg" alt="Icono email"> Email: ${contacto.email}</a></li>
-                    <li class="nav-item"><a href="tel:${contacto.telefono}" class="nav-link px-2 text-body-secondary"><img src="assets/images/telephone-icon.svg" alt="Icono telefono"> Fono: ${contacto.telefono}</a></li>
-                    <li class="nav-item"><a href="https://wa.me/${contacto.whatsapp}" class="nav-link px-2 text-body-secondary"><img src="assets/images/whatsapp.svg" alt="Icono whatsapp"> WhatsApp: ${contacto.whatsapp}</a></li>
-                    <li class="nav-item"><a href="${contacto.web}" class="nav-link px-2 text-body-secondary"><img src="assets/images/globe.svg" alt="Icono world"> ${contacto.web}</a></li>
-                </ul>
-                <p class="text-center text-body-secondary"> &copy; 2024 Company, Inc</p>
-            `;
+            preguntas.forEach((element, index) => {
+                const accordionItem = document.createElement('div');
+                accordionItem.classList.add('accordion-item');
 
-            // Insertar el nuevo contenido
-            infoContacto.innerHTML = contactoHTML;
+                const accordionHeader = document.createElement('h2');
+                accordionHeader.classList.add('accordion-header');
+                accordionHeader.id = 'flush-heading' + index;
+
+                const accordionButton = document.createElement('button');
+                accordionButton.classList.add('accordion-button', 'collapsed');
+                accordionButton.type = 'button';
+                accordionButton.setAttribute('data-bs-toggle', 'collapse');
+                accordionButton.setAttribute('data-bs-target', '#flush-collapse' + index);
+                accordionButton.setAttribute('aria-expanded', 'false');
+                accordionButton.setAttribute('aria-controls', 'flush-collapse' + index);
+                accordionButton.innerText = element.pregunta; // Ajusta esto basado en la estructura de tu JSON
+
+                accordionHeader.appendChild(accordionButton);
+                accordionItem.appendChild(accordionHeader);
+
+                const accordionCollapse = document.createElement('div');
+                accordionCollapse.id = 'flush-collapse' + index;
+                accordionCollapse.classList.add('accordion-collapse', 'collapse');
+                accordionCollapse.setAttribute('data-bs-parent', '#Preguntas');
+
+                const accordionBody = document.createElement('div');
+                accordionBody.classList.add('accordion-body');
+                accordionBody.innerText = element.respuesta; // Ajusta esto basado en la estructura de tu JSON
+
+                accordionCollapse.appendChild(accordionBody);
+                accordionItem.appendChild(accordionCollapse);
+                Preguntas.appendChild(accordionItem);
+            });
+
+            console.log(Preguntas);
         })
         .catch(error => {
-            console.error('Error al obtener la información de contacto:', error);
+            console.error('Error al obtener: ', error); // Muestra el error en la consola.
         });
     }
 
-    // Llamar a la función para obtener y mostrar la información de contacto al cargar la página
-    document.addEventListener('DOMContentLoaded', fetchinfoContacto);
+    // Llamar a la función para obtener y mostrar las preguntas frecuentes
+    fetchPreguntasFrecuentes();
 </script>
+
 
 <!-- informacion de contacto -->
 <script>
