@@ -517,7 +517,7 @@
 </script>
 
 <!-- script para Realizar historia -->
-<script>
+<!-- <script>
     // Función para obtener y mostrar la historia
     function fetchHistoria() {
         fetch('http://localhost/BACK-END/v1/historia/', {
@@ -588,10 +588,10 @@
 
     // Llamar a la función para obtener y mostrar la historia
     fetchHistoria();
-</script>
+</script> -->
 
 <!-- script para Realizar Función para obtener y mostrar las preguntas frecuentes  -->
-<script>    
+<!-- <script>    
     function fetchPreguntasFrecuentes() {
         fetch('http://localhost/BACK-END/v1/pregunta_frecuente/', {
             method: 'GET',
@@ -656,11 +656,11 @@
 
     // Llamar a la función para obtener y mostrar las preguntas frecuentes
     fetchPreguntasFrecuentes();
-</script>
+</script> -->
 
 
 <!-- informacion de contacto -->
-<script>
+<!-- <script>
     // Función para obtener y mostrar la información de contacto
     function fetchinfoContacto() {
         fetch('http://localhost/BACK-END/v1/info_contacto/', {
@@ -717,7 +717,7 @@
 
     // Llamar a la función para obtener y mostrar la información de contacto al cargar la página
     document.addEventListener('DOMContentLoaded', fetchinfoContacto);
-</script>
+</script> -->
 
 
 </HTML> 
