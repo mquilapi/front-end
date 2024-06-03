@@ -417,7 +417,7 @@
 </BODY>
 
 <!-- script para Realizar API SERVICIOS -->
-<script>       
+<!-- <script>       
         fetch('http://localhost/BACK-END/v1/categoria_servicio/', {     //es la dirección a la cual se envía la solicitud.
                 method: 'GET',                                          //indica que estamos solicitando datos del servidor
                 headers: {
@@ -514,7 +514,7 @@
     }   
 }
 
-</script>
+</script> -->
 
 <!-- script para Realizar historia -->
 <script>
@@ -591,7 +591,7 @@
 </script>
 
 <!-- script para Realizar Preguntas frecuentes -->
-<script>
+<!-- <script>
     // Función para obtener y mostrar la información de contacto
     function fetchinfoContacto() {
         fetch('http://localhost/BACK-END/v1/info_contacto/', {
@@ -636,10 +636,10 @@
 
     // Llamar a la función para obtener y mostrar la información de contacto al cargar la página
     document.addEventListener('DOMContentLoaded', fetchinfoContacto);
-</script>
+</script> -->
 
 <!-- informacion de contacto -->
-<script>
+<!-- <script>
     // Función para obtener y mostrar la información de contacto
     function fetchinfoContacto() {
         fetch('http://localhost/BACK-END/v1/info_contacto/', {
@@ -696,7 +696,7 @@
 
     // Llamar a la función para obtener y mostrar la información de contacto al cargar la página
     document.addEventListener('DOMContentLoaded', fetchinfoContacto);
-</script>
+</script> -->
 
 
 </HTML> 
